@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Denuncia } from '../../app/shared/denuncia';
+import { DenunciaProvider } from '../../providers/denuncia/denuncia';
 
 /**
  * Generated class for the DenuciaCidadaoPage page.
@@ -15,31 +17,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DenuciaCidadaoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+
+  private dadosDoForm: Denuncia = new Denuncia;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public denunciaApi: DenunciaProvider) {
+    this.dadosDoForm.tipo = '';
+
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DenuciaCidadaoPage');
   }
 
   readFile($event: any) {
 
-
     if ($event.target.files && $event.target.files[0]) {
-
       var FR = new FileReader();
-
       let img: HTMLImageElement = document.getElementById("img") as HTMLImageElement;
-
-      FR.addEventListener("load", function (e: any) {
+      FR.addEventListener("load", (e: any) => {
         img.src = e.target.result;
+        this.dadosDoForm.foto = e.target.result;
       });
-
       FR.readAsDataURL($event.target.files[0]);
     }
-
-
-
     // var image: any = new Image();
     // var file: File = $event.target.files[0];
     // var myReader: FileReader = new FileReader();
@@ -71,6 +72,15 @@ export class DenuciaCidadaoPage {
 
     //   FR.readAsDataURL(this.files[0]);
     // }
+
+  }
+
+  salvar() {
+
+    this.denunciaApi.lista.push(this.dadosDoForm);
+    this.dadosDoForm = new Denuncia;
+    this.dadosDoForm.tipo = '';
+    console.log(this.denunciaApi.lista);
 
   }
 

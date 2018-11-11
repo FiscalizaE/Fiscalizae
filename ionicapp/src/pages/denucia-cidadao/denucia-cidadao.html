@@ -14,21 +14,39 @@
 
 
 <ion-content>
-  <ion-item>
-    <img id="img" style="min-height: 150px;">
-  </ion-item>
   <ion-item style="text-align: center">
-    <div ion-button icon-only round large>
-      <ion-icon name="camera"></ion-icon>
-      <input type="file" accept="image/*" (change)='readFile($event)' id="capture" capture="camera" style="display: block; position: absolute; opacity: 0;">
+    <img id="img" style="min-height: 150px; max-height: 230px">
+    <div style="text-align: center; position: absolute; bottom: 30px; left: 40%;">
+      <div ion-button icon-only round large>
+        <ion-icon name="camera"></ion-icon>
+        <input type="file" accept="image/*" (change)='readFile($event)' id="capture" capture="camera" style="display: block; position: absolute; opacity: 0;">
+      </div>
     </div>
   </ion-item>
   <ion-item>
-    <ion-label>Categoria</ion-label>
-    <ion-select [(ngModel)]="categoria">
+    <!-- <ion-label>Categoria</ion-label> -->
+    <ion-label color="primary" stacked>Categoria</ion-label>
+    <ion-select [(ngModel)]="dadosDoForm.tipo">
+      <ion-option value="">selecione</ion-option>
       <ion-option value="aguaparada">Água parada</ion-option>
       <ion-option value="aguaservida">Água servida</ion-option>
       <ion-option value="luzapagada">Luz apagada</ion-option>
     </ion-select>
   </ion-item>
+  <ion-item>
+    <ion-label color="primary" stacked>Descrição</ion-label>
+    <ion-textarea [(ngModel)]="dadosDoForm.descricao">
+
+    </ion-textarea>
+  </ion-item>
+  <div>
+    <ion-row style="text-align: center">
+      <ion-col>
+        <button ion-button color="secondary" (click)="salvar()">Salvar</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button color="secondary">Cancelar</button>
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-content>
