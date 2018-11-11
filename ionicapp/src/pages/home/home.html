@@ -1,14 +1,19 @@
-<ion-header>
+<!-- <ion-header>
   <ion-navbar>
     <ion-title>
       Fiscalizaê
     </ion-title>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+   <ion-tabs>
+    <!-- <ion-tab tabIcon="bulb" [root]="tab1" tabTitle="Denúncia"></ion-tab> -->
+    <!-- <ion-tab tabIcon="clipboard" [root]="tab1" tabTitle="Denúncia"></ion-tab> -->
+    <ion-tab tabIcon="eye" [root]="tab1" tabTitle="Denúncia"></ion-tab>
+    <!-- <ion-tab tabIcon="star" [root]="tab2" tabTitle="Histórico"></ion-tab> -->
+    <ion-tab tabIcon="list-box" [root]="tab2" tabTitle="Histórico"></ion-tab>
+    <ion-tab tabIcon="map" [root]="tab2" tabTitle="Mapa"></ion-tab>
+    <ion-tab tabIcon="construct" [root]="tab2" tabTitle="Configurações"></ion-tab>
+  </ion-tabs>`
 </ion-content>
